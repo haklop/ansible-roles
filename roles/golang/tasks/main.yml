@@ -1,0 +1,13 @@
+- name: Retrieve godeb binarie
+  get_url:
+    url: https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz
+    dest: /root/godeb-amd64.tar.gz
+
+- name: Untar godeb
+  unarchive: src=/root/godeb-amd64.tar.gz dest=/root copy=no
+
+- name: Install golang 1.4
+  command: /root/godeb install 1.4 creates=/root/golang_1.4
+
+- name: Touch golang_1.4
+  file: path=/root/golang_1.4 state=touch
