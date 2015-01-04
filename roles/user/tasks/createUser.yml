@@ -1,3 +1,31 @@
+- name: Install oh-my-zsh for root user
+  git: >
+    repo=https://github.com/robbyrussell/oh-my-zsh.git
+    dest=/root/.oh-my-zsh
+    update=yes
+
+- name: Settings default shell for root
+  user: >
+    name=root
+    shell=/bin/zsh
+
+- name: Copy oh-my-zsh theme for root
+  copy: >
+      src=myavitroot.zsh-theme
+      dest=/root/.oh-my-zsh/themes/myavitroot.zsh-theme
+      owner=root
+      group=root
+      mode=0644
+
+- name: Configuring oh-my-zsh for root
+  template: >
+    src=root.zshrc.j2
+    dest=/root/.zshrc
+    owner=root
+    group=root
+    backup=yes
+    mode=0644
+
 - name: Create users account
   user:
     name: "{{ item.username }}"
