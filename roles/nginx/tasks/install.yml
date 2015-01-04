@@ -1,0 +1,14 @@
+- name: Add Nginx repository and update apt cache
+  apt_repository:
+    repo: "ppa:nginx/stable"
+    update_cache: yes
+    state: present
+
+- name: Install nginx package
+  apt: 
+    name: "nginx"
+    state: latest
+    update_cache: yes
+    cache_valid_time: 600
+  notify:
+    - Restart nginx
