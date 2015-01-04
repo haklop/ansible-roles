@@ -1,5 +1,9 @@
 - name: Install apt-transport-https
-  apt: pkg=apt-transport-https state=present update_cache=yes
+  apt:
+    pkg: apt-transport-https
+    state: present
+    update_cache: yes
+    cache_valid_time: 600
 
 - name: Add Docker repository key
   apt_key:
