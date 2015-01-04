@@ -7,7 +7,4 @@
   unarchive: src=/root/godeb-amd64.tar.gz dest=/root copy=no
 
 - name: Install golang 1.4
-  command: /root/godeb install 1.4 creates=/root/golang_1.4
-
-- name: Touch golang_1.4
-  file: path=/root/golang_1.4 state=touch
+  shell: /root/godeb install 1.4 >> /root/golang_1.4 creates=/root/golang_1.4
