@@ -1,0 +1,12 @@
+- name: Install git and zsh 
+  apt: name={{ item }} state=latest update_cache=yes cache_valid_time=600
+  with_items:
+   - git
+   - zsh
+   - git-core
+   - autojump
+   - fail2ban
+
+- name: Disallow password authentication
+  lineinfile: dest=/etc/ssh/sshd_config regexp="^PasswordAuthentication" line="PasswordAuthentication no" state=present
+  notify: Restart ssh

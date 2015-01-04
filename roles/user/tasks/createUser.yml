@@ -1,0 +1,51 @@
+- name: Create users account
+  user:
+    name: "{{ item.username }}"
+    generate_ssh_key: yes
+    groups: sudo,docker
+    append: yes
+  with_items: users
+
+- name: Add authorized_key
+  authorized_key: user={{ item.username }} key="{{ lookup('file', item.public_key) }}"
+  with_items: users
+
+- name: Install oh-my-zsh
+  git: >
+    repo=https://github.com/robbyrussell/oh-my-zsh.git
+    dest=/home/{{ item.username }}/.oh-my-zsh
+    update=yes
+  with_items: users
+
+- name: Settings default shell
+  user: >
+    name={{ item.username }}
+    shell=/bin/zsh
+  with_items: users
+
+- name: Copy oh-my-zsh thme
+  copy: >
+      src=myavit.zsh-theme
+      dest=/home/{{ item.username }}/.oh-my-zsh/themes/myavit.zsh-theme
+      owner={{ item.username }}
+      group={{ item.username }}
+      mode=0644
+  with_items: users
+
+- name: Configuring oh-my-zsh
+  template: >
+    src=zshrc.j2
+    dest=/home/{{ item.username }}/.zshrc
+    owner={{ item.username }}
+    group={{ item.username }}
+    backup=yes
+    mode=0644
+  with_items: users
+
+- name: Setting permissions
+  file: >
+    path=/home/{{ item.username }}/.oh-my-zsh
+    owner={{ item.username }}
+    group={{ item.username }}
+    recurse=yes
+  with_items: users
