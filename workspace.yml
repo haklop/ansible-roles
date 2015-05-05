@@ -18,6 +18,7 @@
 
   roles:
     - git
+    - nvm
     - oh-my-zsh
   vars:
     user_home_dir:

@@ -1,0 +1,6 @@
+- name: Clone nvm git repo
+  git:
+    repo: https://github.com/creationix/nvm.git
+    dest: ~/.nvm
+    update: yes
+    version: master
