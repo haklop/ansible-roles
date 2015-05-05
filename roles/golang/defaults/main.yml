@@ -1,0 +1,4 @@
+version: 1.4.2
+download_url:
+  Darwin: https://storage.googleapis.com/golang/go{{version}}.darwin-amd64-osx10.8.tar.gz
+  Linuxmint: https://storage.googleapis.com/golang/go{{version}}.linux-amd64.tar.gz

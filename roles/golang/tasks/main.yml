@@ -1,10 +1,15 @@
-- name: Retrieve godeb binarie
+- name: Download golang binary
   get_url:
-    url: https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz
-    dest: /root/godeb-amd64.tar.gz
+    url: "{{download_url[ansible_os_family]}}"
+    dest: /tmp/golang-{{version}}.zip
 
-- name: Untar godeb
-  unarchive: src=/root/godeb-amd64.tar.gz dest=/root copy=no
+- name: Ensure /usr/local is a directory
+  sudo: yes
+  file: path=/usr/local state=directory
 
-- name: Install golang 1.4
-  shell: /root/godeb install 1.4 >> /root/golang_1.4 creates=/root/golang_1.4
+- name: Extract golang binary
+  sudo: yes
+  unarchive:
+    src: /tmp/golang-{{version}}.zip
+    dest: /usr/local
+    copy: no

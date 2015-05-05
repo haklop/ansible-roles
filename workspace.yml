@@ -20,6 +20,7 @@
     - git
     - nvm
     - oh-my-zsh
+    - { role: golang, version: 1.4.2 }
   vars:
     user_home_dir:
       Linuxmint: /home
