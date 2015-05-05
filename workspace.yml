@@ -21,6 +21,7 @@
     - nvm
     - oh-my-zsh
     - { role: golang, version: 1.4.2 }
+    - atom
   vars:
     user_home_dir:
       Linuxmint: /home

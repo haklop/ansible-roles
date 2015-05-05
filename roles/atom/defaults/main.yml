@@ -1,0 +1,16 @@
+download_url:
+  Darwin: https://atom.io/download/mac
+  Linuxmint: https://atom.io/download/deb
+file_extension:
+  Darwin: zip
+  Linuxmint: deb
+atom_packages:
+  - atom-lint
+  - autocomplete-paths
+  - autocomplete-plus
+  - go-plus
+  - language-docker
+  - language-terraform
+  - language-groovy
+  - atom-jinja2
+  - language-ini
