@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+  connection: local
+  pre_tasks:
+    - name: Install common packages with brew
+      homebrew:
+        name: "{{ item }}"
+        state: latest
+        update_homebrew: yes
+      with_items:
+        - curl
+        - python
+        - mercurial
+        - ansible
+        - gpg
+        - autojump
+      when: ansible_os_family == 'Darwin'
+
+  roles:
+    - git
+  vars:
+    user_home_dir:
+      Linuxmint: /home
+      Darwin: /Users

@@ -1,0 +1,13 @@
+- name: Ensure git is installed
+  homebrew:
+    name: git
+    state: latest
+  when: ansible_os_family == 'Darwin'
+
+- name: Create git configuration
+  template:
+    src: "{{item}}.j2"
+    dest: ~/.{{item}}
+  with_items:
+    - gitconfig
+    - gitignore
