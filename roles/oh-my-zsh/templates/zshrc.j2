@@ -13,6 +13,7 @@ plugins=(git web-search colored-man colorize bundler catimg docker gem jsontools
 source "$ZSH/oh-my-zsh.sh"
 
 {% if ansible_os_family == 'Darwin' %}
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 # Autojump config
 [[ -s $(brew --prefix)/etc/autojump.sh ]] && . "$(brew --prefix)/etc/autojump.sh"
 {% endif %}

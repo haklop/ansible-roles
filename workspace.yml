@@ -2,6 +2,13 @@
 - hosts: localhost
   connection: local
   pre_tasks:
+    - name: Install homebrew tap
+      homebrew_tap:
+        tap: "{{ item }}"
+        state: present
+      with_items:
+        - caskroom/cask
+      when: ansible_os_family == 'Darwin'
     - name: Install common packages with brew
       homebrew:
         name: "{{ item }}"
@@ -14,6 +21,20 @@
         - ansible
         - gpg
         - autojump
+        - brew-cask
+      when: ansible_os_family == 'Darwin'
+    - name: Install common application with casks
+      homebrew_cask:
+        name: "{{ item }}"
+      with_items:
+          - virtualbox
+          - vagrant
+          - boot2docker
+          - google-chrome
+          - firefox
+          - iterm2
+          - vlc
+          - atom
       when: ansible_os_family == 'Darwin'
 
   roles:
