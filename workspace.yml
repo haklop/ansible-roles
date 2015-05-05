@@ -16,6 +16,7 @@
         update_homebrew: yes
       with_items:
         - curl
+        - wget
         - python
         - mercurial
         - ansible
@@ -35,6 +36,9 @@
           - iterm2
           - vlc
           - atom
+          - sublime-text
+          - sourcetree
+          - google-drive
       when: ansible_os_family == 'Darwin'
 
   roles:
