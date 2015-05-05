@@ -1,0 +1,27 @@
+- name: Install zsh
+  homebrew:
+    name: zsh
+    state: latest
+  when: ansible_os_family == 'Darwin'
+
+- name: Install oh-my-zsh
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh.git
+    dest: ~/.oh-my-zsh
+    update: yes
+    version: master
+
+- name: .oh-my-zsh/custom/themes exists
+  file:
+    path: ~/.oh-my-zsh/custom/themes
+    state: directory
+
+- name: Copy oh-my-zsh custom theme
+  copy:
+    src: myavit.zsh-theme
+    dest: ~/.oh-my-zsh/custom/themes/myavit.zsh-theme
+
+- name: Configuring oh-my-zsh
+  template:
+    src: zshrc.j2
+    dest: ~/.zshrc

@@ -1,0 +1,42 @@
+#!/bin/zsh
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+ZSH_THEME="myavit"
+
+{% if ansible_os_family == 'Darwin' %}
+plugins=(git brew osx web-search autojump sublime colored-man docker pip python ruby vagrant)
+{% else %}
+plugins=(git web-search colored-man colorize bundler catimg docker gem jsontools pip python ruby vagrant)
+{% endif %}
+
+source "$ZSH/oh-my-zsh.sh"
+
+{% if ansible_os_family == 'Darwin' %}
+# Autojump config
+[[ -s $(brew --prefix)/etc/autojump.sh ]] && . "$(brew --prefix)/etc/autojump.sh"
+{% endif %}
+
+# Golang configuration
+export GOPATH=$HOME/projects/goworkspace
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/usr/local/go/bin
+
+{% if ansible_os_family == 'Darwin' %}
+# Boot2Docker Configuration
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=$HOME/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
+{% endif %}
+
+# Terraform Configuration
+export TERRAFORM_HOME=/opt/terraform
+export PATH=$TERRAFORM_HOME:$PATH
+
+# Packer Configuration
+export PACKER_HOME=/opt/packer
+export PATH=$PACKER_HOME:$PATH
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+nvm use stable
