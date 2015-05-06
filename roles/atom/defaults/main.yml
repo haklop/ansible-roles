@@ -14,3 +14,5 @@ atom_packages:
   - language-groovy
   - atom-jinja2
   - language-ini
+  - minimap
+  - minimap-git-diff
