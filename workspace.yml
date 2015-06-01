@@ -39,6 +39,7 @@
           - sublime-text
           - sourcetree
           - google-drive
+          - libreoffice
       when: ansible_os_family == 'Darwin'
 
   roles:
