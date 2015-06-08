@@ -5,7 +5,13 @@ file_extension:
   Darwin: zip
   Linuxmint: deb
 atom_packages:
-  - atom-lint
+  - linter
+  - linter-js-yaml
+  - linter-shellcheck
+  - linter-jshint
+  - linter-scss-lint
+  - linter-csslint
+  - linter-flake8
   - autocomplete-paths
   - autocomplete-plus
   - go-plus
