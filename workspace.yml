@@ -22,6 +22,7 @@
         - ansible
         - gpg
         - autojump
+        - socat
         - brew-cask
       when: ansible_os_family == 'Darwin'
     - name: Install common application with casks
@@ -40,6 +41,7 @@
           - sourcetree
           - google-drive
           - libreoffice
+          - xquartz
       when: ansible_os_family == 'Darwin'
 
   roles:
