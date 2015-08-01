@@ -15,6 +15,7 @@ atom_packages:
   - autocomplete-paths
   - autocomplete-plus
   - go-plus
+  - go-rename
   - language-docker
   - language-terraform
   - language-groovy
