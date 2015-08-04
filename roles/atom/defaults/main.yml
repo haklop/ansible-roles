@@ -23,3 +23,4 @@ atom_packages:
   - language-ini
   - minimap
   - minimap-git-diff
+  - monokai-seti

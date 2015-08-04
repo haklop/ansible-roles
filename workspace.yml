@@ -24,6 +24,7 @@
         - autojump
         - socat
         - brew-cask
+        - shellcheck
       when: ansible_os_family == 'Darwin'
     - name: Install common application with casks
       homebrew_cask:
