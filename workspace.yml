@@ -25,6 +25,9 @@
         - socat
         - brew-cask
         - shellcheck
+        - tmux
+        - docker
+        - docker-machine
       when: ansible_os_family == 'Darwin'
     - name: Install common application with casks
       homebrew_cask:
@@ -32,7 +35,6 @@
       with_items:
           - virtualbox
           - vagrant
-          - boot2docker
           - google-chrome
           - firefox
           - iterm2
